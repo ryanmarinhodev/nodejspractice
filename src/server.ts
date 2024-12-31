@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 
-app.post("/create", (request, response) => {
+app.post("/test", (request, response) => {
   const { name, email, password } = request.body;
   pool.getConnection((err: any, connection: any) => {
     if (err) {

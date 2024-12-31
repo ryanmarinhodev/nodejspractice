@@ -9,6 +9,11 @@ app.use(express.json());
 app.post("/create", (request, response) => {
   const { name, email, password } = request.body;
   pool.getConnection((err: any, connection: any) => {
+    if (err) {
+      return response
+        .status(500)
+        .json({ err, message: "Erro ao conectar ao banco de dados" });
+    }
     connection.query(
       "INSERT INTO users (`user-id`, name, email, password) VALUES(?, ?, ?, ?)",
       [uuidv4(), name, email, password],

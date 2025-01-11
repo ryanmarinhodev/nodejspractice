@@ -6,5 +6,6 @@ const app = express();
 app.use(express.json());
 app.use("/user", userRoutes);
 app.use("/videos", videosRoutes);
+app.use("/videosget", videosRoutes);
 
 app.listen(4000);

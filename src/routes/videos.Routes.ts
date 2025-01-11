@@ -12,9 +12,13 @@ interface Typegem {
 
 const videosRoutes = Router();
 const videosRepository = new VideosRepository();
+const getVideos = new VideosRepository();
 
 videosRoutes.post("/criar-videos", (req, res) => {
   videosRepository.create(req, res);
+});
+videosRoutes.get("/get-videos", (req, res) => {
+  getVideos.getVideos(req, res);
 });
 
 export { videosRoutes };

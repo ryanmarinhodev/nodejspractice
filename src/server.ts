@@ -1,8 +1,11 @@
 import express from "express";
 import { userRoutes } from "./routes/user.Routes.js";
 import { videosRoutes } from "./routes/videos.Routes.js";
+import { config } from "dotenv";
 
+config();
 const app = express();
+
 app.use(express.json());
 app.use("/user", userRoutes);
 app.use("/videos", videosRoutes);

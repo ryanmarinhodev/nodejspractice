@@ -45,6 +45,23 @@ class VideosRepository {
       return res.status(200).json({ videos: results });
     });
   }
+
+  search(req: Request, res: Response) {
+    const { title } = req.body;
+
+    const sqlSearch = "SELECT * FROM videos WHERE title LIKE ?";
+    pool.query(sqlSearch, [`%${title}%`], (err, results) => {
+      if (err) {
+        return res.status(500).json({ message: "Erro ao buscar vídeos" });
+      }
+
+      if (results.length === 0) {
+        return res.status(404).json({ message: "Nenhum vídeo encontrado" });
+      }
+
+      return res.status(200).json({ videos: results });
+    });
+  }
 }
 
 export { VideosRepository };

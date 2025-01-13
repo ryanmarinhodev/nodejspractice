@@ -7,5 +7,6 @@ app.use(express.json());
 app.use("/user", userRoutes);
 app.use("/videos", videosRoutes);
 app.use("/videosget", videosRoutes);
+app.use("/search", videosRoutes);
 
 app.listen(4000);
